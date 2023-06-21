@@ -1,0 +1,15 @@
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.csproj.AssemblyReference.cache
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.AssemblyInfoInputs.cache
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.AssemblyInfo.cs
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.csproj.CoreCompileInputs.cache
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\bin\Debug\net6.0\KLauncher.Core.deps.json
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\bin\Debug\net6.0\KLauncher.Core.dll
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\bin\Debug\net6.0\KLauncher.Core.pdb
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\bin\Debug\net6.0\KLauncher.Shared.dll
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\bin\Debug\net6.0\KLauncher.Shared.pdb
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.csproj.CopyComplete
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.dll
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\refint\KLauncher.Core.dll
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\KLauncher.Core.pdb
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.Core\obj\Debug\net6.0\ref\KLauncher.Core.dll

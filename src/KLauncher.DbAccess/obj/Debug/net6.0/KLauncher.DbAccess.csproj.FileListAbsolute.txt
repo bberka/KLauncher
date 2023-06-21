@@ -1,0 +1,12 @@
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\bin\Debug\net6.0\KLauncher.DbAccess.deps.json
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\bin\Debug\net6.0\KLauncher.DbAccess.dll
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\bin\Debug\net6.0\KLauncher.DbAccess.pdb
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\KLauncher.DbAccess.csproj.AssemblyReference.cache
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\KLauncher.DbAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\KLauncher.DbAccess.AssemblyInfoInputs.cache
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\KLauncher.DbAccess.AssemblyInfo.cs
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\KLauncher.DbAccess.csproj.CoreCompileInputs.cache
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\KLauncher.DbAccess.dll
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\refint\KLauncher.DbAccess.dll
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\KLauncher.DbAccess.pdb
+C:\Users\kkass\source\repos\#MyProjects\KLauncher\src\KLauncher.DbAccess\obj\Debug\net6.0\ref\KLauncher.DbAccess.dll

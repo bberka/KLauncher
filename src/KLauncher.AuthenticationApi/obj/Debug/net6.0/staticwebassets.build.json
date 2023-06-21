@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "tHza18VB9DJ9bsBKBlbsUc3celqawLikX07d+BqRK+w=",
+  "Source": "KLauncher.AuthenticationApi",
+  "BasePath": "_content/KLauncher.AuthenticationApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
