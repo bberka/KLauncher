@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using KLauncher.Core.Models;
+using KLauncher.Shared;
 using KLauncher.Shared.Abstract;
 using KLauncher.Shared.Interface;
 

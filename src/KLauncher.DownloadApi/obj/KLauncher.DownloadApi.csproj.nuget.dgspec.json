@@ -4,6 +4,114 @@
     "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.DownloadApi\\KLauncher.DownloadApi.csproj": {}
   },
   "projects": {
+    "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Core\\KLauncher.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Core\\KLauncher.Core.csproj",
+        "projectName": "KLauncher.Core",
+        "projectPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Core\\KLauncher.Core.csproj",
+        "packagesPath": "C:\\Users\\kkass\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\kkass\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\KLauncher.Shared.csproj": {
+                "projectPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\KLauncher.Shared.csproj"
+              },
+              "C:\\Users\\kkass\\source\\repos\\Serilog.ConfigHelper\\Serilog.ConfigHelper.csproj": {
+                "projectPath": "C:\\Users\\kkass\\source\\repos\\Serilog.ConfigHelper\\Serilog.ConfigHelper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Ardalis.Extensions": {
+              "target": "Package",
+              "version": "[0.9.4, )"
+            },
+            "Ardalis.Result": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Serilog.Formatting.Compact": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "System.Data.HashFunction.xxHash": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.DownloadApi\\KLauncher.DownloadApi.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -22,16 +130,20 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {}
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.ServerLib\\KLauncher.ServerLib.csproj": {
+                "projectPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.ServerLib\\KLauncher.ServerLib.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -41,9 +153,13 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -64,6 +180,226 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.ServerLib\\KLauncher.ServerLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.ServerLib\\KLauncher.ServerLib.csproj",
+        "projectName": "KLauncher.ServerLib",
+        "projectPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.ServerLib\\KLauncher.ServerLib.csproj",
+        "packagesPath": "C:\\Users\\kkass\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.ServerLib\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\kkass\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Core\\KLauncher.Core.csproj": {
+                "projectPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Core\\KLauncher.Core.csproj"
+              },
+              "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\KLauncher.Shared.csproj": {
+                "projectPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\KLauncher.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\KLauncher.Shared.csproj": {
+      "version": "0.0.0.1",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\KLauncher.Shared.csproj",
+        "projectName": "KLauncher.Shared",
+        "projectPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\KLauncher.Shared.csproj",
+        "packagesPath": "C:\\Users\\kkass\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kkass\\source\\repos\\#MyProjects\\KLauncher\\src\\KLauncher.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\kkass\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Ardalis.Result": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
+            "Ardalis.Result.AspNetCore": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
+            "Ardalis.Result.FluentValidation": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
+            "Ninject": {
+              "target": "Package",
+              "version": "[3.3.6, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "System.Data.HashFunction.xxHash": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\kkass\\source\\repos\\Serilog.ConfigHelper\\Serilog.ConfigHelper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kkass\\source\\repos\\Serilog.ConfigHelper\\Serilog.ConfigHelper.csproj",
+        "projectName": "Serilog.ConfigHelper",
+        "projectPath": "C:\\Users\\kkass\\source\\repos\\Serilog.ConfigHelper\\Serilog.ConfigHelper.csproj",
+        "packagesPath": "C:\\Users\\kkass\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kkass\\source\\repos\\Serilog.ConfigHelper\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\kkass\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -26,4 +26,8 @@
     <ProjectReference Include="..\KLauncher.Shared\KLauncher.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BuildOptions\" />
+  </ItemGroup>
+
 </Project>

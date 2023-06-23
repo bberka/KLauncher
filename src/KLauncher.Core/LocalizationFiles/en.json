@@ -1,0 +1,11 @@
+{
+  "FileDoesNotExists": "File does not exists",
+  "FileAlreadyExists": "File already exists",
+  "FileIsNotReadable": "File is not readable",
+  "FileIsNotWritable": "File is not writable",
+  "FileIsNotDirectory": "File is not directory",
+  "FileTooBig": "File size can not exceed {0}",
+  "FileExtensionNotAllowed": "File extension not allowed",
+  "FileExtensionNotSupported": "File extension not supported",
+  "FileMimeTypeNotAllowed": "File mime type not allowed"
+}

@@ -2339,12 +2339,14 @@
       },
       "KLauncher.Shared/0.0.0.1": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Ardalis.Result": "7.1.0",
           "Ardalis.Result.AspNetCore": "7.1.0",
           "Ardalis.Result.FluentValidation": "7.1.0",
-          "Ninject": "3.3.6"
+          "Ninject": "3.3.6",
+          "Serilog": "3.0.0",
+          "System.Data.HashFunction.xxHash": "2.0.0"
         },
         "compile": {
           "bin/placeholder/KLauncher.Shared.dll": {}

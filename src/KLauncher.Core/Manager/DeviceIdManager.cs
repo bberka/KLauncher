@@ -34,13 +34,13 @@ public class DeviceIdManager
 
     private void RegisterDeviceIds()
     {
-        Id1 = HashManager.Sha256AsHexString(GetNtAccountSecIdentifier());
-        Id2 = HashManager.Sha256AsHexString(GetBIOSCombinationIdentifier());
-        Id3 = HashManager.Sha256AsHexString(GetBaseBoardIdentifier());
-        Id4 = HashManager.Sha256AsHexString(GetMACIdentifier());
-        Id5 = HashManager.Sha256AsHexString(GetVideoControllerIdentifier());
-        Id6 = HashManager.Sha256AsHexString(GetCPUIdentifier());
-        Id7 = HashManager.Sha256AsHexString(GetDiskDriveIdentifier());
+        Id1 = HashManager.HashAsHexString(GetNtAccountSecIdentifier());
+        Id2 = HashManager.HashAsHexString(GetBIOSCombinationIdentifier());
+        Id3 = HashManager.HashAsHexString(GetBaseBoardIdentifier());
+        Id4 = HashManager.HashAsHexString(GetMACIdentifier());
+        Id5 = HashManager.HashAsHexString(GetVideoControllerIdentifier());
+        Id6 = HashManager.HashAsHexString(GetCPUIdentifier());
+        Id7 = HashManager.HashAsHexString(GetDiskDriveIdentifier());
     }
 
     private static string GetNtAccountSecIdentifier() {
@@ -107,19 +107,13 @@ public class DeviceIdManager
             var rv = "";
 
             var sb = new StringBuilder();
-            try {
-                using var mosearcher = new ManagementObjectSearcher($"SELECT * FROM {className}");
-                using var mocollection = mosearcher.Get();
+            using var mosearcher = new ManagementObjectSearcher($"SELECT * FROM {className}");
+            using var mocollection = mosearcher.Get();
 
-                foreach (ManagementObject mo in mocollection) {
-                    rv = mo[instanceName] != null ? mo[instanceName].ToString() : "";
-                    break;
-                }
+            foreach (ManagementObject mo in mocollection) {
+                rv = mo[instanceName] != null ? mo[instanceName].ToString() : "";
+                break;
             }
-            catch (Exception Ex) {
-                Logger<>.Fatal($"Exception occurred while generating fingerprint: {Ex.Message}");
-            }
-
             return rv;
         }
 
@@ -128,19 +122,13 @@ public class DeviceIdManager
             var rv = "";
 
             var managementClass = new ManagementClass(className);
-            try {
-                var instances = managementClass.GetInstances();
+            var instances = managementClass.GetInstances();
 
-                foreach (var current in instances)
-                    if (!(current[statement].ToString() != "True") && !(rv != "")) {
-                        rv = current[instanceName].ToString();
-                        break;
-                    }
-            }
-            catch (Exception ex) {
-                Logger.Fatal($"Exception occurred while generating fingerprint: {ex.Message}");
-            }
-
+            foreach (var current in instances)
+                if (!(current[statement].ToString() != "True") && !(rv != "")) {
+                    rv = current[instanceName].ToString();
+                    break;
+                }
             return rv;
         }
     }

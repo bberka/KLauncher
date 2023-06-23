@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Serilog;
 
 namespace KLauncher.Core.Manager;
 
@@ -12,6 +13,7 @@ public class EncryptionManager
     private readonly byte[] ivBytes;
     private readonly byte[] keyBytes;
 
+    private const string _additionalKey = "XmMqPLuQkkrKaNmCvRGyceZNDdquhTJokckfPdcKPjeekkooeaSmBGDNwEaqDFJq";
     
     public EncryptionManager() {
         var key = CreateKey();
@@ -26,19 +28,22 @@ public class EncryptionManager
     private static DateTime GetDate() {
         var now = DateTime.UtcNow;
         var second = now.Second;
-        now = now.AddHours(+second * ConstManager.BuildNumber);
-        now = now.AddYears(-second / ConstManager.BuildNumber);
-        now = now.AddMonths(+second * ConstManager.BuildNumber);
-        now = now.AddDays(-second + ConstManager.BuildNumber);
-        now = now.AddMinutes(+second * ConstManager.BuildNumber);
+        var ms = now.Millisecond;
+        now = now.AddHours(+second + ConstManager.BuildNumber);
+        now = now.AddYears(-second - ConstManager.BuildNumber );
+        now = now.AddMonths(+second + ConstManager.BuildNumber);
+        now = now.AddDays(-second - ConstManager.BuildNumber);
+        now = now.AddMinutes(+second + ConstManager.BuildNumber);
         now = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
         return now;
     }
 
     private static byte[] CreateKey() {
         var time = GetDate();
-        var str = time.ToString("MM-dd-yyyy-HH-mm-ss");
-        var key = HashManager.Sha256(str);
+        var ticks = time.Ticks;
+        Log.Debug(ticks.ToString());
+        var str = time.ToString("MM-dd-yyyy-HH-mm-ss") + "|" + _additionalKey;
+        var key = HashManager.Hash(str);
         return key;
     }
 

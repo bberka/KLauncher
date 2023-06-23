@@ -1,4 +1,4 @@
-﻿namespace KLauncher.Shared.Manager;
+﻿namespace KLauncher.Core.Manager;
 
 public class PathManager
 {

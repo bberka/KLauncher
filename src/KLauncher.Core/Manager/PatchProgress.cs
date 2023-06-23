@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using KLauncher.Core.Models;
+using KLauncher.Shared;
 using KLauncher.Shared.Abstract;
 
 namespace KLauncher.Core.Manager;
@@ -100,7 +101,7 @@ public class PatchProgress
         if (_stopWatchForSpeedCalculation.IsRunning == false) _stopWatchForSpeedCalculation.Start();
         if (!(_stopWatchForSpeedCalculation.Elapsed.TotalMilliseconds >= DOWNLOAD_SPEED_UPDATE_MILISECONDS)) return;
         DownloadSpeed = _downloadedBytesForSpeedCalculation / 1024.0 / 1024.0 / _stopWatchForSpeedCalculation.Elapsed.TotalSeconds * (1000 / DOWNLOAD_SPEED_UPDATE_MILISECONDS);
-        _lastByteReceivedFileName = Path.GetFileName(launcherFile.PathFromRoot);
+        _lastByteReceivedFileName = Path.GetFileName(launcherFile.RelativePath);
         _stopWatchForSpeedCalculation.Reset();
         _stopWatchForSpeedCalculation.Start();
         _downloadedBytesForSpeedCalculation = 0;

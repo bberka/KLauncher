@@ -1,4 +1,4 @@
-﻿namespace KLauncher.Shared;
+﻿namespace KLauncher.Core;
 
 public class KKernel 
 {

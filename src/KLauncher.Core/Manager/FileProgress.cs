@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Net;
 using KLauncher.Core.Models;
+using KLauncher.Shared;
 using KLauncher.Shared.Abstract;
 
 namespace KLauncher.Core.Manager;

@@ -12,19 +12,20 @@ public static class ConstManager
             var minor = assemblyVersion.Minor;
             var build = assemblyVersion.Build;
             var revision = assemblyVersion.Revision;
-            var buildNumber = major * 1000000 + minor * 10000 + build * 100 + revision;
+            var buildNumber = major * 1000 + minor * 100 + build * 10 + revision;
             return buildNumber;
         }
     }
 
     public static bool IsDevelopment {
         get {
-#if DEBUG
-            return true;
-#endif
-            return false;
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if (environment is null) return false;
+            return environment == "Development";
+
         }
     }
+
     
-    
+
 }
