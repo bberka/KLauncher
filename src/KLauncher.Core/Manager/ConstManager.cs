@@ -22,10 +22,6 @@ public static class ConstManager
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             if (environment is null) return false;
             return environment == "Development";
-
         }
     }
-
-    
-
 }

@@ -1,9 +1,7 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using System.Data.HashFunction;
+﻿using System.Data.HashFunction;
 using System.Data.HashFunction.xxHash;
 using System.Security.Cryptography;
-using KLauncher.Shared;
+using System.Text;
 using KLauncher.Shared.Enum;
 
 namespace KLauncher.Core.Manager;
@@ -18,6 +16,7 @@ public static class HashManager
             _ => throw new ArgumentOutOfRangeException()
         };
     }
+
     public static string HashFileByFilePath(string path) {
         return SharedConfig.HashType switch {
             HashType.Md5 => Md5HashFileByFilePath(path),

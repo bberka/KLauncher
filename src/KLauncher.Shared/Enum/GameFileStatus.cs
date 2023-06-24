@@ -5,5 +5,5 @@ public enum GameFileStatus
     Same,
     Different,
     NewOrMissing,
-    Deleted,
+    Deleted
 }

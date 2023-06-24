@@ -1,10 +1,10 @@
-﻿using Ardalis.Result;
+﻿using EasMe.Result;
 
 namespace KLauncher.Shared.Interface;
 
 public interface IAuthenticator
 {
-    Result<IUser> Login(string username, string password); 
-    Result<IUser> LoginWithPlayToken(string playToken);
-    Result<IUser> LoginWithRefreshToken(string refreshToken);
+    ResultData<IUser> Login(string username, string password, bool rememberMe);
+    ResultData<IUser> LoginWithPlayToken(string playToken);
+    ResultData<IUser> LoginWithRefreshToken(string refreshToken);
 }

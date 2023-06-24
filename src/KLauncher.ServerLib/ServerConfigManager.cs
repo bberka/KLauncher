@@ -1,18 +1,18 @@
 ﻿using KLauncher.ServerLib.Models;
-using KLauncher.Shared.Interface;
-using KLauncher.Shared.Models;
 using Newtonsoft.Json;
 
 namespace KLauncher.ServerLib;
 
 public class ServerConfigManager
 {
+    private static ServerConfigManager? _instance;
+
     private ServerConfigManager() {
         var serverSettingFileExists = File.Exists("server-config.json");
-        if (!serverSettingFileExists) 
+        if (!serverSettingFileExists)
             throw new Exception("server-config.json does not exists");
         var text = File.ReadAllText("server-config.json");
-        Config = JsonConvert.DeserializeObject<ServerConfiguration>(text);
+        Config = JsonConvert.DeserializeObject<DownloadServerConfiguration>(text);
         if (Config is null) throw new Exception("server-config.json is empty");
         if (!Directory.Exists(Config.LauncherFilesDirectoryPath))
             throw new Exception("LauncherFilesDirectoryPath does not exists");
@@ -22,14 +22,15 @@ public class ServerConfigManager
         // if (!parseVersion || version is null) throw new Exception("LauncherVersion is not valid");
         // GameFileManager.SetRootPath(Config.ClientFilesDirectoryPath);
     }
+
     public static ServerConfigManager This {
         get {
-            _instance ??= new();
+            _instance ??= new ServerConfigManager();
             return _instance;
         }
     }
-    private static ServerConfigManager? _instance;
-    public ServerConfiguration Config { get; private set; }
+
+    public DownloadServerConfiguration Config { get; }
 
     public static void Read() {
         _ = This.Config; //Access to init constructor

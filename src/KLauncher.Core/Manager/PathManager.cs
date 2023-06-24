@@ -8,21 +8,17 @@ public class PathManager
 
     public string GetRootPath(string path) {
         throw new NotImplementedException();
-
     }
 
     public string GetTempPath(string path) {
         throw new NotImplementedException();
-
     }
 
     public string GetVersionPath(string path) {
         throw new NotImplementedException();
-
     }
-    public string GetRootDirectory()
-    {
-        throw new NotImplementedException();
 
+    public string GetRootDirectory() {
+        throw new NotImplementedException();
     }
 }

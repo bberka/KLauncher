@@ -1,11 +1,8 @@
-﻿using Ardalis.Result;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace KLauncher.ServerLib.Filters;
 
-public class ApiResponseFilter :IActionFilter
+public class ApiResponseFilter : IActionFilter
 {
     public void OnActionExecuting(ActionExecutingContext context) {
     }

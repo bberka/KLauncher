@@ -1,32 +1,16 @@
-﻿using Ardalis.Result;
-using KLauncher.Core.Manager;
+﻿using KLauncher.Core.Manager;
 
 namespace KLauncher.Core;
 
-public class GameFile : GameFileWithoutHash,IEquatable<GameFile>
+public class GameFile : GameFileWithoutHash, IEquatable<GameFile>
 {
     internal const long MaxFileSize = 1024 * 1024 * 1024; //1GB
     internal const bool CheckZeroByteFiles = true;
-    internal static readonly string[] IgnoreFileExtensions = new string[] {
+
+    internal static readonly string[] IgnoreFileExtensions = {
         ".log"
     };
-    
-    public static Result<GameFile> Read(string rootPath, string fullFilePath) {
-        if (!File.Exists(fullFilePath)) return Result.Error("FileDoesNotExists");
-        var fileInfo = new FileInfo(fullFilePath);
-        var fileSize = fileInfo.Length;
-        if (fileSize > MaxFileSize) return Result.Error("FileTooBig", GetByteAsString(fileSize));
-        if (CheckZeroByteFiles)
-            if (fileSize == 0)
-                return Result.Error("FileIsEmpty");
-        var stream = fileInfo.OpenRead();
-        var hash = HashManager.HashFileByStream(stream);
-        stream.Close();
-        stream.Flush();
-        var pathFromRoot = fullFilePath.Replace(rootPath, "");
 
-        return Result.Success(new GameFile(pathFromRoot, hash, fileInfo.Length, fileInfo.LastWriteTimeUtc.Ticks));
-    }
     public GameFile(string pathFromRoot, string hash, long size, long lastUpdate) {
         RelativePath = pathFromRoot;
         Hash = hash;
@@ -35,7 +19,6 @@ public class GameFile : GameFileWithoutHash,IEquatable<GameFile>
     }
 
     public GameFile() {
-        
     }
 
     // /// <summary>
@@ -51,11 +34,33 @@ public class GameFile : GameFileWithoutHash,IEquatable<GameFile>
     //     RelativePath 
     //     .Replace("\\","*")
     //     .Replace("/","*"));
-    
+
     /// <summary>
-    /// File bytes hash string to compare files content.
+    ///     File bytes hash string to compare files content.
     /// </summary>
     public string Hash { get; init; }
+
+    public bool Equals(GameFile? other) {
+        if (ReferenceEquals(null, other)) return false;
+        return other.Hash == Hash;
+    }
+
+    public static ResultData<GameFile> Read(string rootPath, string fullFilePath) {
+        if (!File.Exists(fullFilePath)) return Result.Error("FileDoesNotExists");
+        var fileInfo = new FileInfo(fullFilePath);
+        var fileSize = fileInfo.Length;
+        if (fileSize > MaxFileSize) return Result.Error("FileTooBig", GetByteAsString(fileSize));
+        if (CheckZeroByteFiles)
+            if (fileSize == 0)
+                return Result.Error("FileIsEmpty");
+        var stream = fileInfo.OpenRead();
+        var hash = HashManager.HashFileByStream(stream);
+        stream.Close();
+        stream.Flush();
+        var pathFromRoot = fullFilePath.Replace(rootPath, "");
+
+        return new GameFile(pathFromRoot, hash, fileInfo.Length, fileInfo.LastWriteTimeUtc.Ticks);
+    }
     // /// <summary>
     // /// File size in bytes. Max file size is 1GB.
     // /// </summary>
@@ -72,11 +77,6 @@ public class GameFile : GameFileWithoutHash,IEquatable<GameFile>
 
     public static bool operator !=(GameFile gameFile, GameFile gameFile2) {
         return !Equals(gameFile, gameFile2);
-    }
-
-    public bool Equals(GameFile? other) {
-        if (ReferenceEquals(null, other)) return false;
-        return other.Hash == this.Hash;
     }
 
     public override bool Equals(object? obj) {
@@ -97,11 +97,10 @@ public class GameFile : GameFileWithoutHash,IEquatable<GameFile>
     }
 
     public GameFileWithoutHash WithoutHash() {
-        return new GameFileWithoutHash() {
+        return new GameFileWithoutHash {
             Size = Size,
             LastUpdate = LastUpdate,
             RelativePath = RelativePath
         };
-
     }
 }

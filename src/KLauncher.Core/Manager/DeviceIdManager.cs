@@ -1,12 +1,11 @@
 ﻿using System.Management;
 using System.Security.Principal;
 using System.Text;
-using Microsoft.Extensions.Logging;
 
 namespace KLauncher.Core.Manager;
 
 /// <summary>
-/// Creates a unique device id based on the device information. This is only supported on Windows.
+///     Creates a unique device id based on the device information. This is only supported on Windows.
 /// </summary>
 public class DeviceIdManager
 {
@@ -32,8 +31,7 @@ public class DeviceIdManager
     public string Id6 { get; private set; } = string.Empty;
     public string Id7 { get; private set; } = string.Empty;
 
-    private void RegisterDeviceIds()
-    {
+    private void RegisterDeviceIds() {
         Id1 = HashManager.HashAsHexString(GetNtAccountSecIdentifier());
         Id2 = HashManager.HashAsHexString(GetBIOSCombinationIdentifier());
         Id3 = HashManager.HashAsHexString(GetBaseBoardIdentifier());
@@ -114,6 +112,7 @@ public class DeviceIdManager
                 rv = mo[instanceName] != null ? mo[instanceName].ToString() : "";
                 break;
             }
+
             return rv;
         }
 
@@ -129,6 +128,7 @@ public class DeviceIdManager
                     rv = current[instanceName].ToString();
                     break;
                 }
+
             return rv;
         }
     }

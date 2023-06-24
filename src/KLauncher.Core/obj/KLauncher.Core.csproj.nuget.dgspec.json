@@ -51,14 +51,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Ardalis.Extensions": {
-              "target": "Package",
-              "version": "[0.9.4, )"
-            },
-            "Ardalis.Result": {
-              "target": "Package",
-              "version": "[7.1.0, )"
-            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[9.0.1, )"
@@ -152,18 +144,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Ardalis.Result": {
-              "target": "Package",
-              "version": "[7.1.0, )"
-            },
-            "Ardalis.Result.AspNetCore": {
-              "target": "Package",
-              "version": "[7.1.0, )"
-            },
-            "Ardalis.Result.FluentValidation": {
-              "target": "Package",
-              "version": "[7.1.0, )"
-            },
             "Ninject": {
               "target": "Package",
               "version": "[3.3.6, )"

@@ -7,12 +7,42 @@ namespace KLauncher.Core.Manager;
 
 public class GameFileManager
 {
+    private const int ParallelismDegree = 5;
+    private static readonly object GetFiles_FilesReadLock = new();
+
     private readonly string _rootPath;
+    //     var files = new List<GameFileWithoutHash>();
+    //     var rootDirectory = new DirectoryInfo(GetRootPath());
+    //     var existingFileList = rootDirectory
+    //         .GetFiles("*", SearchOption.AllDirectories)
+    //         .Where(x => !IsFileIgnored(x.FullName))
+    //         .ToArray();
+    //     Parallel.ForEach(existingFileList, new ParallelOptions() {
+    //         MaxDegreeOfParallelism = ParallelismDegree
+    //     }, file => {
+    //         var relativePath = file.FullName.Replace(GetRootPath(), "");
+    //         var gameFile = new GameFileWithoutHash() {
+    //             RelativePath = relativePath,
+    //             Size = file.Length,
+    //             LastUpdate = file.LastWriteTimeUtc.Ticks,
+    //         };
+    //         lock (files) {
+    //             files.Add(gameFile);
+    //         }
+    //     });
+    //     Log.Debug("{RemovedFileCount}:{NewFileCount}:{FileCount}", removedCount, newFileCount, files.Count);
+    //     return files;
+    // }
+    //
+    //
+
+    private List<GameFile> _cachedFiles = new();
+
+    private List<GameFileWithoutHash> _cachedFilesWithoutHash = new();
+
     public GameFileManager(IOptions<RootDirectory> directory) {
         _rootPath = directory.Value.Path;
-        
     }
-    private const int ParallelismDegree = 5;
     // private static string _rootPath;
 
     private string GetRootPath() {
@@ -28,7 +58,6 @@ public class GameFileManager
         return GameFile.IgnoreFileExtensions.Any(path.EndsWith);
     }
 
-    private List<GameFileWithoutHash> _cachedFilesWithoutHash = new();
     public List<GameFileWithoutHash> GetFilesWithoutHash() {
         var files = new List<GameFileWithoutHash>();
         var rootDirectory = new DirectoryInfo(GetRootPath());
@@ -36,7 +65,7 @@ public class GameFileManager
             .GetFiles("*", SearchOption.AllDirectories)
             .Where(x => !IsFileIgnored(x.FullName))
             .ToArray();
-        Parallel.ForEach(existingFileList, new ParallelOptions() {
+        Parallel.ForEach(existingFileList, new ParallelOptions {
             MaxDegreeOfParallelism = ParallelismDegree
         }, file => {
             var relativePath = file.FullName.Replace(GetRootPath(), "");
@@ -53,11 +82,12 @@ public class GameFileManager
                     return;
                 }
             }
+
             Log.Verbose("Reading file {RelativeFilePath}", relativePath);
-            var gameFile = new GameFileWithoutHash() {
+            var gameFile = new GameFileWithoutHash {
                 RelativePath = relativePath,
                 Size = file.Length,
-                LastUpdate = file.LastWriteTimeUtc.Ticks,
+                LastUpdate = file.LastWriteTimeUtc.Ticks
             };
             lock (files) {
                 files.Add(gameFile);
@@ -70,33 +100,6 @@ public class GameFileManager
         _cachedFilesWithoutHash = files;
         return files;
     } // public List<GameFileWithoutHash> GetFilesWithoutHash() {
-         //     var files = new List<GameFileWithoutHash>();
-         //     var rootDirectory = new DirectoryInfo(GetRootPath());
-         //     var existingFileList = rootDirectory
-         //         .GetFiles("*", SearchOption.AllDirectories)
-         //         .Where(x => !IsFileIgnored(x.FullName))
-         //         .ToArray();
-         //     Parallel.ForEach(existingFileList, new ParallelOptions() {
-         //         MaxDegreeOfParallelism = ParallelismDegree
-         //     }, file => {
-         //         var relativePath = file.FullName.Replace(GetRootPath(), "");
-         //         var gameFile = new GameFileWithoutHash() {
-         //             RelativePath = relativePath,
-         //             Size = file.Length,
-         //             LastUpdate = file.LastWriteTimeUtc.Ticks,
-         //         };
-         //         lock (files) {
-         //             files.Add(gameFile);
-         //         }
-         //     });
-         //     Log.Debug("{RemovedFileCount}:{NewFileCount}:{FileCount}", removedCount, newFileCount, files.Count);
-         //     return files;
-         // }
-         //
-         //
-        
-    private List<GameFile> _cachedFiles = new();
-    private static readonly object GetFiles_FilesReadLock = new();
 
     public List<GameFile> GetFiles() {
         var files = new List<GameFile>();
@@ -105,7 +108,7 @@ public class GameFileManager
             .GetFiles("*", SearchOption.AllDirectories)
             .Where(x => !IsFileIgnored(x.FullName))
             .ToArray();
-        Parallel.ForEach(existingFileList, new ParallelOptions() {
+        Parallel.ForEach(existingFileList, new ParallelOptions {
             MaxDegreeOfParallelism = ParallelismDegree
         }, file => {
             var relativePath = file.FullName.Replace(GetRootPath(), "");
@@ -125,11 +128,11 @@ public class GameFileManager
 
             Log.Verbose("Reading file {RelativeFilePath}", relativePath);
             var hash = HashManager.HashFileByFilePath(file.FullName)!;
-            var gameFile = new GameFile() {
+            var gameFile = new GameFile {
                 RelativePath = relativePath,
                 Hash = hash,
                 Size = file.Length,
-                LastUpdate = file.LastWriteTimeUtc.Ticks,
+                LastUpdate = file.LastWriteTimeUtc.Ticks
             };
             lock (files) {
                 files.Add(gameFile);
@@ -154,9 +157,7 @@ public class GameFileManager
         //Checking deleted files in remote 
         foreach (var localFile in localFiles) {
             var remoteFile = remoteFiles.FirstOrDefault(x => x.PathHash == localFile.PathHash);
-            if (remoteFile is null) {
-                result.Add(new FileDiffResult(null, localFile));
-            }
+            if (remoteFile is null) result.Add(new FileDiffResult(null, localFile));
         }
 
         return result;
@@ -201,11 +202,11 @@ public class GameFileManager
         var hash = HashManager.HashFileByStream(stream);
         stream.Close();
         stream.Dispose();
-        return new GameFile() {
+        return new GameFile {
             RelativePath = path.Replace(GetRootPath(), ""),
             Hash = hash,
             Size = fi.Length,
-            LastUpdate = fi.LastWriteTimeUtc.Ticks,
+            LastUpdate = fi.LastWriteTimeUtc.Ticks
         };
     }
 
@@ -218,13 +219,14 @@ public class GameFileManager
         var files = GetFilesWithoutHash();
         return files.FirstOrDefault(x => x.PathHash == hash);
     }
+
     public GameFile GetGameFileByFileInfo(FileInfo fileInfo) {
         var hash = HashManager.HashFileByFilePath(fileInfo.FullName);
-        return new GameFile() {
+        return new GameFile {
             RelativePath = fileInfo.FullName.Replace(GetRootPath(), ""),
             Hash = hash,
             Size = fileInfo.Length,
-            LastUpdate = fileInfo.LastWriteTimeUtc.Ticks,
+            LastUpdate = fileInfo.LastWriteTimeUtc.Ticks
         };
     }
 

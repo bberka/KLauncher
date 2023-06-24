@@ -1,17 +1,11 @@
-using System.Net;
-using Ardalis.Result;
-using Ardalis.Result.AspNetCore;
 using KLauncher.Core.Manager;
 using KLauncher.ServerLib;
 using KLauncher.ServerLib.Filters;
-using KLauncher.ServerLib.Middlewares;
 using KLauncher.ServerLib.Models;
 using KLauncher.Shared.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Serilog;
 
 #region LOGGER_CONFIG
+
 LoggerConfigManager.ApplyApiConfiguration();
 AppDomain.CurrentDomain.ProcessExit += LoggerConfigManager.Events.OnProcessExit;
 AppDomain.CurrentDomain.UnhandledException += LoggerConfigManager.Events.OnUnhandledException;
@@ -50,12 +44,8 @@ builder.Services.AddControllers(x => {
     x.Filters.Add<IpAddressFilter>();
     x.Filters.Add<ApiResponseFilter>();
     x.Filters.Add<UserAgentFilter>();
-}).ConfigureApiBehaviorOptions(options =>
-{
-    options.InvalidModelStateResponseFactory = context => {
-        return new HttpErrorResponseToResult(context).ToResult();
-    };
-});;
+}).ConfigureApiBehaviorOptions(options => { options.InvalidModelStateResponseFactory = context => { return new HttpErrorResponseToResult(context).ToResult(); }; });
+;
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -63,6 +53,9 @@ builder.Services.AddSwaggerGen();
 #endregion
 
 #region DEPENDENCY_INJECTION
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
 
 builder.Services.AddHttpContextAccessor();
 // builder.Services.AddSerilog();
@@ -72,26 +65,27 @@ builder.Services.AddSingleton<GameFileManager>();
 // builder.Services.AddScoped<ApiResponseToResultMiddleware>();
 
 builder.Services.AddResponseCompression();
+
 // builder.Services.Configure<ServerConfiguration>(builder.Configuration.GetSection(ServerConfiguration.SectionName));
 builder.Services.Configure<LauncherInformation>(builder.Configuration.GetSection(LauncherInformation.SectionName));
-builder.Services.Configure<RootDirectory>(x => {
-    x.Path = builder.Configuration.GetValue<string>("ServerConfiguration:ClientFilesDirectoryPath");
-});
+builder.Services.Configure<RootDirectory>(x => { x.Path = builder.Configuration.GetValue<string>(DownloadServerConfiguration.SectionName+ ":ClientFilesDirectoryPath"); });
 
-builder.Services.AddOptions<ServerConfiguration>()
-    .BindConfiguration(ServerConfiguration.SectionName)
-    .ValidateDataAnnotations() 
-    .ValidateOnStart(); 
+builder.Services.AddOptions<DownloadServerConfiguration>()
+    .BindConfiguration(DownloadServerConfiguration.SectionName)
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
 
 // // Explicitly register the settings object by delegating to the IOptions object
 // builder.Services.AddSingleton(resolver => 
 //     resolver.GetRequiredService<IOptions<SlackApiSettings>>().Value);
+
 #endregion
 
 
 var app = builder.Build();
 
 #region DEFAULT_CONFIG
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
@@ -101,6 +95,7 @@ if (app.Environment.IsDevelopment()) {
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.UseResponseCompression();
 app.UseStaticFiles();
@@ -111,13 +106,10 @@ app.UseStaticFiles();
 
 app.MapControllers();
 
-
 #endregion
 
 
 // app.UseSerilogRequestLogging();
-
-
 
 
 app.Run();

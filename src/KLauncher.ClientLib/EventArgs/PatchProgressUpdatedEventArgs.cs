@@ -1,6 +1,5 @@
-﻿namespace KLauncher.Shared.EventArgs;
+﻿namespace KLauncher.ClientLib.EventArgs;
 
 public class PatchProgressUpdatedEventArgs
 {
-    
 }

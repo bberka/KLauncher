@@ -6,8 +6,8 @@ namespace KLauncher.ClientLib;
 
 public class KHttpClient : HttpClient
 {
-    private readonly IOptionsSnapshot<LauncherInformation> _options;
     private readonly EncryptionManager _encryptionManager;
+    private readonly IOptionsSnapshot<LauncherInformation> _options;
 
     public KHttpClient(
         IOptionsSnapshot<LauncherInformation> options) {

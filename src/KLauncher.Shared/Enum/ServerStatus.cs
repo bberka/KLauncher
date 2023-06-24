@@ -7,5 +7,5 @@ public enum ServerStatusType
     Offline,
     Maintenance,
     Unknown,
-    Error,
+    Error
 }

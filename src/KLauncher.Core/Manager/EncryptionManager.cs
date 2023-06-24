@@ -5,16 +5,17 @@ using Serilog;
 namespace KLauncher.Core.Manager;
 
 /// <summary>
-/// Encryption manager for encrypting and decrypting strings. Different instances of this class will have different keys.
-/// For client and server matching key, key is generated based on a time formula. It will be same if created in same second.
+///     Encryption manager for encrypting and decrypting strings. Different instances of this class will have different
+///     keys.
+///     For client and server matching key, key is generated based on a time formula. It will be same if created in same
+///     second.
 /// </summary>
 public class EncryptionManager
 {
+    private const string _additionalKey = "XmMqPLuQkkrKaNmCvRGyceZNDdquhTJokckfPdcKPjeekkooeaSmBGDNwEaqDFJq";
     private readonly byte[] ivBytes;
     private readonly byte[] keyBytes;
 
-    private const string _additionalKey = "XmMqPLuQkkrKaNmCvRGyceZNDdquhTJokckfPdcKPjeekkooeaSmBGDNwEaqDFJq";
-    
     public EncryptionManager() {
         var key = CreateKey();
         using var sha256 = SHA256.Create();
@@ -30,7 +31,7 @@ public class EncryptionManager
         var second = now.Second;
         var ms = now.Millisecond;
         now = now.AddHours(+second + ConstManager.BuildNumber);
-        now = now.AddYears(-second - ConstManager.BuildNumber );
+        now = now.AddYears(-second - ConstManager.BuildNumber);
         now = now.AddMonths(+second + ConstManager.BuildNumber);
         now = now.AddDays(-second - ConstManager.BuildNumber);
         now = now.AddMinutes(+second + ConstManager.BuildNumber);
@@ -41,14 +42,12 @@ public class EncryptionManager
     private static byte[] CreateKey() {
         var time = GetDate();
         var ticks = time.Ticks;
-        Log.Debug(ticks.ToString());
         var str = time.ToString("MM-dd-yyyy-HH-mm-ss") + "|" + _additionalKey;
         var key = HashManager.Hash(str);
         return key;
     }
 
-    public string Encrypt(string plainText)
-    {
+    public string Encrypt(string plainText) {
         if (ConstManager.IsDevelopment) return plainText;
         var plainBytes = Encoding.UTF8.GetBytes(plainText);
         using var aes = Aes.Create();
@@ -69,5 +68,4 @@ public class EncryptionManager
         var decryptedBytes = decryptor.TransformFinalBlock(encryptedBytes, 0, encryptedBytes.Length);
         return Encoding.UTF8.GetString(decryptedBytes);
     }
-   
 }
