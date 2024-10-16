@@ -1,24 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <LangVersion>11</LangVersion>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="4.0.1"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\KLauncher.ServerLib\KLauncher.ServerLib.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KLauncher.ServerLib\KLauncher.ServerLib.csproj"/>
+    <ProjectReference Include="..\KLauncher.Shared\KLauncher.Shared.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <Reference Include="EasMe.Result">
-        <HintPath>..\..\..\..\..\build\easme\Release\net6.0\EasMe.Result.dll</HintPath>
-      </Reference>
-    </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EasMe.Result">
+      <HintPath>..\..\..\..\..\build\easme\Release\net6.0\EasMe.Result.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

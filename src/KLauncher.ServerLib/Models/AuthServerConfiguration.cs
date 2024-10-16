@@ -4,8 +4,8 @@ namespace KLauncher.ServerLib.Models;
 
 public class AuthServerConfiguration : IAuthServerConfiguration
 {
-    public const string SectionName = "AuthServerConfiguration";
+  public const string SectionName = "AuthServerConfiguration";
 
-    public string[] AllowIpAddress { get; }
-    public string RealIpAddressHeader { get; set; }
+  public string[] AllowIpAddress { get; }
+  public string RealIpAddressHeader { get; set; }
 }

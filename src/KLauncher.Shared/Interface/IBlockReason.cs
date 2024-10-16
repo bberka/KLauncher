@@ -2,6 +2,6 @@
 
 public interface IBlockReason
 {
-    public DateTime BlockEndDate { get; set; }
-    public string Reason { get; set; }
+  public DateTime BlockEndDate { get; set; }
+  public string Reason { get; set; }
 }

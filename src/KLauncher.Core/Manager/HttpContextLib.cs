@@ -4,7 +4,7 @@ namespace KLauncher.Core.Manager;
 
 public static class HttpContextLib
 {
-    private static readonly HttpContextAccessor? Accessor = new();
+  private static readonly HttpContextAccessor? Accessor = new();
 
-    public static HttpContext? Current => Accessor?.HttpContext;
+  public static HttpContext? Current => Accessor?.HttpContext;
 }

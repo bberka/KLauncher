@@ -1,5 +1,3 @@
 ﻿namespace KLauncher.Shared.Abstract;
 
-public abstract class BaseResponse
-{
-}
+public abstract class BaseResponse { }

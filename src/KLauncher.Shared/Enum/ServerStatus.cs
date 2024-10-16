@@ -2,10 +2,10 @@
 
 public enum ServerStatusType
 {
-    None,
-    Online,
-    Offline,
-    Maintenance,
-    Unknown,
-    Error
+  None,
+  Online,
+  Offline,
+  Maintenance,
+  Unknown,
+  Error
 }

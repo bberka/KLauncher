@@ -1,24 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <LangVersion>11</LangVersion>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.2"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\KLauncher.ServerLib\KLauncher.ServerLib.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KLauncher.Core\KLauncher.Core.csproj"/>
+    <ProjectReference Include="..\KLauncher.ServerLib\KLauncher.ServerLib.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <_ContentIncludedByDefault Remove="Log\KL_20230622.json" />
-    </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Log\KL_20230622.json"/>
+  </ItemGroup>
 
 </Project>

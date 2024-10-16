@@ -1,5 +1,3 @@
 ﻿namespace KLauncher.ClientLib.EventArgs;
 
-public class PatchProgressCompletedEventArgs
-{
-}
+public class PatchProgressCompletedEventArgs { }

@@ -4,9 +4,6 @@ namespace KLauncher.Core;
 
 public record GameFile : GameFileWithoutHash
 {
-
-
-
   public GameFile(string pathFromRoot, string hash, long size, long lastUpdate) : base(pathFromRoot, size, lastUpdate) {
     Hash = hash;
     Size = size;

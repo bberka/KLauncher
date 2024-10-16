@@ -1,5 +1,3 @@
 ﻿namespace KLauncher.Shared.Enum;
 
-public enum ResultCode
-{
-}
+public enum ResultCode { }

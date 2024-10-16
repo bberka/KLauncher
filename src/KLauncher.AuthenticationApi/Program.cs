@@ -10,10 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers(x => {
-    x.Filters.Add<IpAddressFilter>();
-    x.Filters.Add<ApiResponseFilter>();
-    x.Filters.Add<UserAgentFilter>();
-}).ConfigureApiBehaviorOptions(options => { options.InvalidModelStateResponseFactory = context => { return new HttpErrorResponseToResult(context).ToResult(); }; });
+         x.Filters.Add<IpAddressFilter>();
+         x.Filters.Add<ApiResponseFilter>();
+         x.Filters.Add<UserAgentFilter>();
+       })
+       .ConfigureApiBehaviorOptions(options => { options.InvalidModelStateResponseFactory = context => { return new HttpErrorResponseToResult(context).ToResult(); }; });
 ;
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,15 +31,15 @@ builder.Services.Configure<LauncherInformation>(builder.Configuration.GetSection
 
 
 builder.Services.AddOptions<AuthServerConfiguration>()
-    .BindConfiguration(AuthServerConfiguration.SectionName)
-    .ValidateDataAnnotations()
-    .ValidateOnStart();
+       .BindConfiguration(AuthServerConfiguration.SectionName)
+       .ValidateDataAnnotations()
+       .ValidateOnStart();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 app.UseAuthorization();

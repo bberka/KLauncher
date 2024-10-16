@@ -41,10 +41,11 @@ var builder = WebApplication.CreateBuilder(args);
 //             .With((ctrlr, result) => string.Join("\r\n", result.ValidationErrors)))
 //     ));
 builder.Services.AddControllers(x => {
-    x.Filters.Add<IpAddressFilter>();
-    x.Filters.Add<ApiResponseFilter>();
-    x.Filters.Add<UserAgentFilter>();
-}).ConfigureApiBehaviorOptions(options => { options.InvalidModelStateResponseFactory = context => { return new HttpErrorResponseToResult(context).ToResult(); }; });
+         x.Filters.Add<IpAddressFilter>();
+         x.Filters.Add<ApiResponseFilter>();
+         x.Filters.Add<UserAgentFilter>();
+       })
+       .ConfigureApiBehaviorOptions(options => { options.InvalidModelStateResponseFactory = context => { return new HttpErrorResponseToResult(context).ToResult(); }; });
 ;
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -68,12 +69,12 @@ builder.Services.AddResponseCompression();
 
 // builder.Services.Configure<ServerConfiguration>(builder.Configuration.GetSection(ServerConfiguration.SectionName));
 builder.Services.Configure<LauncherInformation>(builder.Configuration.GetSection(LauncherInformation.SectionName));
-builder.Services.Configure<RootDirectory>(x => { x.Path = builder.Configuration.GetValue<string>(DownloadServerConfiguration.SectionName+ ":ClientFilesDirectoryPath"); });
+builder.Services.Configure<RootDirectory>(x => { x.Path = builder.Configuration.GetValue<string>(DownloadServerConfiguration.SectionName + ":ClientFilesDirectoryPath"); });
 
 builder.Services.AddOptions<DownloadServerConfiguration>()
-    .BindConfiguration(DownloadServerConfiguration.SectionName)
-    .ValidateDataAnnotations()
-    .ValidateOnStart();
+       .BindConfiguration(DownloadServerConfiguration.SectionName)
+       .ValidateDataAnnotations()
+       .ValidateOnStart();
 
 // // Explicitly register the settings object by delegating to the IOptions object
 // builder.Services.AddSingleton(resolver => 
@@ -88,8 +89,8 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

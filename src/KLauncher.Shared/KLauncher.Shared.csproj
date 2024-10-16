@@ -1,27 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <Version>0.0.0.1</Version>
-        <LangVersion>11</LangVersion>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.0.0.1</Version>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Folder Include="Constant\" />
-    </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Constant\"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Ninject" Version="3.3.6" />
-        <PackageReference Include="Serilog" Version="3.0.0" />
-        <PackageReference Include="System.Data.HashFunction.xxHash" Version="2.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="EasMe.Result">
-        <HintPath>..\..\..\..\..\build\easme\Release\net6.0\EasMe.Result.dll</HintPath>
-      </Reference>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EasMe.Result" Version="3.0.1"/>
+    <PackageReference Include="Ninject" Version="3.3.6"/>
+    <PackageReference Include="Serilog" Version="4.0.1"/>
+    <PackageReference Include="System.Data.HashFunction.xxHash" Version="2.0.0"/>
+  </ItemGroup>
 
 </Project>

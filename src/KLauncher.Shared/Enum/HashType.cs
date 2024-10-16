@@ -2,7 +2,7 @@
 
 public enum HashType
 {
-    Md5,
-    Sha256,
-    XxHash
+  Md5,
+  Sha256,
+  XxHash
 }

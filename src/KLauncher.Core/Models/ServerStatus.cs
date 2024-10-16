@@ -5,6 +5,6 @@ namespace KLauncher.Core.Models;
 
 public class ServerStatus : IServerStatus
 {
-    public int OnlinePlayerCount { get; set; }
-    public ServerStatusType Status { get; set; }
+  public int OnlinePlayerCount { get; set; }
+  public ServerStatusType Status { get; set; }
 }
