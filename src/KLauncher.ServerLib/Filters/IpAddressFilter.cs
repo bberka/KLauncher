@@ -1,5 +1,4 @@
-﻿using KLauncher.Core.Manager;
-using KLauncher.ServerLib.Models;
+﻿using KLauncher.ServerLib.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Options;

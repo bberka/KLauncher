@@ -1,6 +1,7 @@
 ﻿using EasMe.Result;
 using KLauncher.Core.Models;
 using KLauncher.Shared.Interface;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
