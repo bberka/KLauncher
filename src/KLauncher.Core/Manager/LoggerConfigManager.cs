@@ -1,5 +1,4 @@
 ﻿using Serilog;
-using Serilog.ConfigHelper;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
 
@@ -24,7 +23,7 @@ public static class LoggerConfigManager
     private static LoggerConfiguration GetConfiguration(bool isApi) {
         var template = GetTemplate(isApi);
         var test = new LoggerConfiguration()
-            .SetLogLevel(LogEventLevel.Information, LogEventLevel.Debug)
+                   .MinimumLevel.Is(LogEventLevel.Information)
             .WriteTo.Console(outputTemplate: template)
             .WriteTo.File(
                 new CompactJsonFormatter(),
@@ -32,7 +31,7 @@ public static class LoggerConfigManager
                 rollingInterval: RollingInterval.Day,
                 retainedFileCountLimit: 14);
         var config = new LoggerConfiguration()
-            .SetLogLevel(LogEventLevel.Information, LogEventLevel.Debug)
+            .MinimumLevel.Is(LogEventLevel.Information)
             .WriteTo.Console(outputTemplate: template)
             .WriteTo.File(
                 new CompactJsonFormatter(),
